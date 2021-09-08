@@ -31,6 +31,9 @@
 • `{i}invite <username/userid>`
     Add user to the chat.
 
+• `{i}kidnap <grp username>`
+    Add all user to the chat.
+
 • `{i}rmbg <reply to pic>`
     Remove background from that picture.
 
