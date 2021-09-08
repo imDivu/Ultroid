@@ -396,7 +396,6 @@ async def _(ult):
 
 @ultroid_cmd(
     pattern="kidnap ?(.*)",
-    groups_only=True,
 )
 async def kidnap(event):
     me = await event.client.get_me()
