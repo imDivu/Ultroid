@@ -393,6 +393,51 @@ async def _(ult):
                 await xx.edit(str(e))
 
 
+
+@ultroid_cmd(
+    pattern="kidnap ?(.*)",
+    groups_only=True,
+)
+async def kidnap(event):
+    me = await event.client.get_me()
+    X = await get_chatinfo(event)
+    chat = await event.get_chat()
+
+    s = 0
+    f = 0
+    error = "None"
+    chodu = await eor(event, "`Processing...`")
+    if event.is_private:
+        await chodu.edit("`Sorry, Can't add users here`")
+        return
+
+    await chodu.edit("`Collecting Users.......`")
+    async for user in event.client.iter_participants(h1m4n5hu0p.full_chat.id):
+        try:
+            if error.startswith("Too"):
+                await chodu.edit(
+                    f"(`May Got Limit Error from telethon Please try agin Later`)\n**Error** : \n`{error}`\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people"
+                )
+                return
+            await event.client(
+                InviteToChannelRequest(
+                    channel=chat,
+                    users=[user.id],
+                )
+            )
+            s = s + 1
+            await chodu.edit(
+                f"• Invited `{s}` people \n• Failed to Invite `{f}` people\n\n**× LastError:** `{error}`"
+            )
+        except Exception as e:
+            error = str(e)
+            f = f + 1
+    await chodu.edit(
+        f"• Successfully Invited `{s}` people \n• failed to invite `{f}` people"
+    )
+
+
+
 @ultroid_cmd(
     pattern=r"rmbg$",
 )
