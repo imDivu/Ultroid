@@ -38,6 +38,7 @@
 
 import asyncio
 
+from pyUltroid import asst
 from pyUltroid.functions.ch_db import *
 
 from . import *
@@ -88,7 +89,7 @@ async def _(e):
     async for msg in e.client.iter_messages(int(c), reverse=True):
         try:
             await asyncio.sleep(2)
-            await e.client.send_message(int(d), msg)
+            await asst.send_message(int(d), msg)
         except BaseException:
             pass
     await z.edit("Done")
