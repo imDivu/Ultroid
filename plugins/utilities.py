@@ -403,7 +403,6 @@ async def _(ult):
 async def _(event):
     me = await event.client.get_me()
     X = await get_chatinfo(event)
-    chat = await event.get_chat()
 
     s = 0
     f = 0
@@ -414,7 +413,7 @@ async def _(event):
         return
 
     await chodu.edit("`Collecting Users.......`")
-    if not ult.is_channel and ult.is_group:
+    if not event.is_channel and event.is_group:
         async for user in event.client.iter_participants(X.full_chat.id):
             time.sleep(5)
             try:
@@ -452,7 +451,7 @@ async def _(event):
                 return
             await event.client(
                 InviteToChannelRequest(
-                    channel=chat,
+                    channel=event.chat_id,
                     users=[user.id],
                 )
             )
