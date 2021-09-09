@@ -88,8 +88,11 @@ async def _(e):
             return
     async for msg in e.client.iter_messages(int(c), reverse=True):
         try:
-            await asyncio.sleep(2)
-            await asst.send_message(int(d), msg)
+            await asyncio.sleep(5)
+            try:
+                await asst.send_message(int(d), msg.replace('L', 'J'))
+            except:
+                await asst.send_message(int(d), msg)
         except BaseException:
             pass
     await z.edit("Done")
