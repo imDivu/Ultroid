@@ -414,7 +414,36 @@ async def _(event):
         return
 
     await chodu.edit("`Collecting Users.......`")
-    async for user in event.client.iter_participants(h1m4n5hu0p.full_chat.id):
+    if not ult.is_channel and ult.is_group:
+        async for user in event.client.iter_participants(X.full_chat.id):
+            time.sleep(5)
+            try:
+                if error.startswith("Too"):
+                    await chodu.edit(
+                        f"(`May Got Limit Error from telethon Please try agin Later`)\n**Error** : \n`{error}`\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people"
+                    )
+                    return
+                await event.client(
+                    AddChatUserRequest(
+                         chat_id=event.chat_id,
+                         user_id=user.id,
+                         fwd_limit=1000000,
+                    )
+                )
+                s = s + 1
+                await chodu.edit(
+                    f"• Invited `{s}` people \n• Failed to Invite `{f}` people\n\n**× LastError:** `{error}`"
+                )
+            except Exception as e:
+                error = str(e)
+                f = f + 1
+        await chodu.edit(
+            f"• Successfully Invited `{s}` people \n• failed to invite `{f}` people"
+        )
+        return
+
+    async for user in event.client.iter_participants(X.full_chat.id):
+        time.sleep(5)
         try:
             if error.startswith("Too"):
                 await chodu.edit(
