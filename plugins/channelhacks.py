@@ -88,7 +88,7 @@ async def _(e):
     async for msg in e.client.iter_messages(int(c), reverse=True):
         try:
             await asyncio.sleep(5)
-            await e.client.send_message(int(d), f'======================\n\n```{str(msg)}```')
+            await e.client.send_message(int(d), msg)
         except BaseException:
             pass
     await z.edit("Done")
