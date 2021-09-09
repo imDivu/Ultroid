@@ -38,7 +38,6 @@
 
 import asyncio
 
-from pyUltroid import asst as Goofff9
 from pyUltroid.functions.ch_db import *
 
 from . import *
@@ -89,7 +88,7 @@ async def _(e):
     async for msg in e.client.iter_messages(int(c), reverse=True):
         try:
             await asyncio.sleep(5)
-            await Goofff9.send_message(int(d), msg)
+            await e.client.send_message(int(d), msg)
         except BaseException:
             pass
     await z.edit("Done")
